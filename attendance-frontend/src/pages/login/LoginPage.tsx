@@ -14,9 +14,30 @@ export const LoginPage = () => {
         e.preventDefault();
         setError('');
         try {
-            const { data } = await apiClient.post('/auth/login', { email, password });
-            login(data.token, data.refreshToken, data.user);
-            if (data.user.role === 'admin') {
+            // Step 1: Login to get tokens
+            const { data: loginData } = await apiClient.post('/auth/login', { email, password });
+            console.log('Login response:', loginData);
+
+            const accessToken = loginData.access_token;
+            const refreshToken = loginData.refresh_token;
+
+            if (!accessToken || !refreshToken) {
+                throw new Error('Invalid login response: missing tokens');
+            }
+
+            // Step 2: Get user info using the access token
+            const { data: userData } = await apiClient.get('/users/me', {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
+            console.log('User data:', userData);
+
+            // Step 3: Save everything
+            login(accessToken, refreshToken, userData);
+
+            // Step 4: Navigate based on role
+            if (userData.role === 'admin') {
                 navigate('/admin');
             } else {
                 navigate('/attendance');

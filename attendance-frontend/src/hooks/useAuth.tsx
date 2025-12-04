@@ -1,9 +1,15 @@
 import { useState, useEffect, createContext, useContext, type ReactNode } from 'react';
 
 interface User {
-    id: string;
-    name: string;
-    role: 'admin' | 'user';
+    id: number;
+    email: string;
+    first_name: string;
+    last_name: string;
+    role: 'admin' | 'manager' | 'employee';
+    department_id: number | null;
+    is_active: boolean;
+    created_at: string;
+    updated_at: string;
 }
 
 interface AuthContextType {

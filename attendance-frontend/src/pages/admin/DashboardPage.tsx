@@ -13,7 +13,7 @@ export const DashboardPage = () => {
                             <h1 className="text-xl font-bold text-gray-900">Admin Dashboard</h1>
                         </div>
                         <div className="flex items-center space-x-4">
-                            <span className="text-gray-700">Welcome, {user?.name}</span>
+                            <span className="text-gray-700">Welcome, {user?.first_name} {user?.last_name}</span>
                             <button
                                 onClick={logout}
                                 className="px-3 py-2 text-sm font-medium text-red-600 rounded-md hover:bg-red-50"

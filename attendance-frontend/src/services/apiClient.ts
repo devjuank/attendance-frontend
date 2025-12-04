@@ -33,9 +33,10 @@ apiClient.interceptors.response.use(
                 if (!refreshToken) {
                     throw new Error('No refresh token');
                 }
-                const { data } = await axios.post(`${API_URL}/auth/refresh`, { refreshToken });
-                localStorage.setItem('token', data.token);
-                apiClient.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+                const { data } = await axios.post(`${API_URL}/auth/refresh`, { refresh_token: refreshToken });
+                localStorage.setItem('token', data.access_token);
+                localStorage.setItem('refreshToken', data.refresh_token);
+                apiClient.defaults.headers.common['Authorization'] = `Bearer ${data.access_token}`;
                 return apiClient(originalRequest);
             } catch (refreshError) {
                 localStorage.removeItem('token');
