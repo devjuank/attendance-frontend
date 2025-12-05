@@ -17,13 +17,13 @@ export const ScanHandlerPage = () => {
 
         const markAttendance = async () => {
             try {
-                await apiClient.post('/attendance/mark', { qrToken: token });
+                await apiClient.post('/attendance/mark', { qr_token: token });
                 navigate('/attendance/confirm');
             } catch (error: unknown) {
                 setStatus('error');
                 if (error && typeof error === 'object' && 'response' in error) {
-                    const err = error as { response: { data: { message: string } } };
-                    setErrorMessage(err.response?.data?.message || 'Failed to mark attendance');
+                    const err = error as { response: { data: { error: string } } };
+                    setErrorMessage(err.response?.data?.error || 'Failed to mark attendance');
                 } else {
                     setErrorMessage('Failed to mark attendance');
                 }

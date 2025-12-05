@@ -9,9 +9,9 @@ export const LiveQrPage = () => {
 
     const fetchQr = async () => {
         try {
-            const { data } = await apiClient.get('/admin/qr/active');
-            setQrToken(data.qrToken);
-            setExpiresAt(data.expiresAt);
+            const { data } = await apiClient.get('/qr/active');
+            setQrToken(data.qr_token);
+            setExpiresAt(data.expires_at);
         } catch (error) {
             console.error('Failed to fetch QR', error);
         }
@@ -19,9 +19,9 @@ export const LiveQrPage = () => {
 
     const regenerateQr = async () => {
         try {
-            const { data } = await apiClient.post('/admin/qr/generate');
-            setQrToken(data.qrToken);
-            setExpiresAt(data.expiresAt);
+            const { data } = await apiClient.post('/qr/generate');
+            setQrToken(data.qr_token);
+            setExpiresAt(data.expires_at);
         } catch (error) {
             console.error('Failed to regenerate QR', error);
         }
