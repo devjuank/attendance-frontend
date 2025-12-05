@@ -63,7 +63,10 @@ export const LiveQrPage = () => {
 
             <div className="p-8 bg-white rounded-xl shadow-2xl">
                 {qrToken ? (
-                    <QRCodeSVG value={qrToken} size={300} />
+                    <QRCodeSVG
+                        value={`${window.location.origin}/attendance?token=${qrToken}`}
+                        size={300}
+                    />
                 ) : (
                     <div className="w-[300px] h-[300px] flex items-center justify-center bg-gray-200 text-gray-500">
                         Loading QR...
