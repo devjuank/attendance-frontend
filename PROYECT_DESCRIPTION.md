@@ -78,6 +78,34 @@ La aplicación permite que admins generen códigos de asistencia y usuarios marq
 
 ---
 
+## ✅ Estado de Implementación (actualizado: 2025-12-04)
+
+### Completado
+- ✅ Login con JWT (access_token + refresh_token)
+- ✅ Persistencia de sesión en localStorage
+- ✅ Dashboard de administrador
+- ✅ Pantalla Live QR con timer visual (10 minutos)
+- ✅ Auto-refresh del QR al expirar
+- ✅ Botón de regeneración manual del QR
+- ✅ Captura de qr_token desde URL (/attendance?token=XYZ)
+- ✅ Marcado de asistencia con validación de QR
+- ✅ Pantalla de confirmación de asistencia
+- ✅ Integración completa con API v1 (snake_case)
+- ✅ Manejo de errores y estados de carga
+
+### Endpoints Backend Requeridos
+Revisar [API_CONTRACT.md](./API_CONTRACT.md) para la especificación completa:
+- `POST /auth/login` - Login con credenciales
+- `POST /auth/refresh` - Renovar access token
+- `GET /users/me` - Obtener perfil del usuario
+- `GET /qr/active` - Obtener QR activo (Admin)
+- `POST /qr/generate` - Generar nuevo QR (Admin)
+- `POST /attendance/mark` - Marcar asistencia con QR token
+- `GET /attendance/today` - Ver asistencia de hoy
+- `GET /attendance/history` - Historial de asistencias
+
+---
+
 ## 📂 4. Estructura de Carpetas Propuesta
 
 ```

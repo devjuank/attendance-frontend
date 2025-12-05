@@ -93,10 +93,17 @@ attendance-frontend/
 Crea un archivo `.env` en la raíz de `attendance-frontend/`:
 
 ```env
-VITE_API_URL=http://localhost:8080/api
+VITE_API_URL=http://localhost:8080/api/v1
 ```
 
 **Nota:** Ajusta la URL según tu configuración de backend.
+
+### ⚠️ Importante
+
+- El backend usa la versión **v1** de la API (`/api/v1`)
+- Todos los endpoints están documentados en [API_CONTRACT.md](./API_CONTRACT.md)
+- El sistema usa **QR dinámicos** que expiran cada 10 minutos
+- La autenticación se maneja con JWT (access_token + refresh_token)
 
 ---
 
