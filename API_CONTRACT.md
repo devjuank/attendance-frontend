@@ -475,7 +475,6 @@ List all events.
     "description": "Monthly Town Hall Meeting",
     "start_time": "2025-12-05T10:00:00Z",
     "end_time": "2025-12-05T11:00:00Z",
-    "end_time": "2025-12-05T11:00:00Z",
     "is_active": true,
     "created_at": "2025-12-04T20:00:00Z"
   }
@@ -506,7 +505,6 @@ Create a new event.
   "description": "Monthly Town Hall Meeting",
   "start_time": "2025-12-05T10:00:00Z",
   "end_time": "2025-12-05T11:00:00Z",
-  "location": "Auditorium",
   "is_active": true,
   "created_at": "2025-12-04T20:00:00Z"
 }
