@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { apiClient } from '../../services/apiClient';
 
@@ -9,6 +9,7 @@ export const LoginPage = () => {
     const [error, setError] = useState('');
     const { login } = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -36,9 +37,14 @@ export const LoginPage = () => {
             // Step 3: Save everything
             login(accessToken, refreshToken, userData);
 
-            // Step 4: Navigate based on role
-            if (userData.role === 'admin') {
-                navigate('/admin');
+            // Step 4: Navigate based on role or return url
+            const state = location.state as { from?: { pathname: string; search: string } } | null;
+            const from = state?.from?.pathname ? `${state.from.pathname}${state.from.search}` : null;
+
+            if (from) {
+                navigate(from, { replace: true });
+            } else if (userData.role === 'admin') {
+                navigate('/admin/dashboard');
             } else {
                 navigate('/attendance');
             }

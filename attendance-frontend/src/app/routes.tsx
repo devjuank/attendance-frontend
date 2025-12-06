@@ -1,7 +1,8 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { LoginPage } from '../pages/login/LoginPage';
 import { DashboardPage } from '../pages/admin/DashboardPage';
-import { LiveQrPage } from '../pages/admin/LiveQrPage';
+import { CreateEventPage } from '../pages/admin/CreateEventPage';
+import { EventDetailsPage } from '../pages/admin/EventDetailsPage';
 import { ScanHandlerPage } from '../pages/attendance/ScanHandlerPage';
 import { ConfirmPage } from '../pages/attendance/ConfirmPage';
 import { PrivateRoute } from '../components/layout/PrivateRoute';
@@ -16,11 +17,19 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/admin',
+                element: <Navigate to="/admin/dashboard" replace />,
+            },
+            {
+                path: '/admin/dashboard',
                 element: <DashboardPage />,
             },
             {
-                path: '/admin/live-qr',
-                element: <LiveQrPage />,
+                path: '/admin/events/new',
+                element: <CreateEventPage />,
+            },
+            {
+                path: '/admin/events/:id',
+                element: <EventDetailsPage />,
             },
             {
                 path: '/attendance',
