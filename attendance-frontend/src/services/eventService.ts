@@ -7,9 +7,9 @@ export const eventService = {
         return data;
     },
 
-    create: async (eventData: Omit<Event, 'id' | 'created_at' | 'is_active'>) => {
-        const { data } = await apiClient.post<Event>('/events', eventData);
-        return data;
+    create: async (data: Omit<Event, 'id' | 'created_at' | 'is_active'>) => {
+        const response = await apiClient.post<Event>('/events', data);
+        return response.data;
     },
 
     getById: async (id: number) => {

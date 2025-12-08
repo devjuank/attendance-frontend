@@ -3,6 +3,7 @@ import { LoginPage } from '../pages/login/LoginPage';
 import { DashboardPage } from '../pages/admin/DashboardPage';
 import { CreateEventPage } from '../pages/admin/CreateEventPage';
 import { EventDetailsPage } from '../pages/admin/EventDetailsPage';
+import { ReportsPage } from '../pages/admin/ReportsPage';
 import { ScanHandlerPage } from '../pages/attendance/ScanHandlerPage';
 import { ConfirmPage } from '../pages/attendance/ConfirmPage';
 import { PrivateRoute } from '../components/layout/PrivateRoute';
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
             {
                 path: '/admin/events/:id',
                 element: <EventDetailsPage />,
+            },
+            {
+                path: '/admin/reports',
+                element: <ReportsPage />,
             },
             {
                 path: '/attendance',
